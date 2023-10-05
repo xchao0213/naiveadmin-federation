@@ -1,0 +1,23 @@
+{
+  "name": "vite-federation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm --parallel --filter \"./packages/**\" build ",
+    "serve": "pnpm --parallel --filter \"./packages/**\" serve"
+  },
+  "dependencies": {
+    "@originjs/vite-plugin-federation": "^1.3.2",
+    "naive-ui": "^2.34.4",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "less": "^4.2.0",
+    "less-loader": "^11.1.3"
+  },
+  "keywords": [],
+  "author": "xchao0213@gmail.com",
+  "license": "MIT"
+}
