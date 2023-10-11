@@ -1,0 +1,32 @@
+{
+  "name": "app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview --port 5000 --strictPort",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vicons/antd": "^0.12.0",
+    "@vicons/ionicons5": "^0.12.0",
+    "element-resize-detector": "^1.2.4",
+    "lodash-es": "^4.17.21",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.197",
+    "@types/node": "^18.17.4",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "typescript": "^5.0.2",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.5",
+    "vite-plugin-top-level-await": "^1.1.1",
+    "vue-tsc": "^1.8.5",
+    "vuedraggable": "^4.1.0"
+  }
+}
