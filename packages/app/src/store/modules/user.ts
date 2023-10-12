@@ -3,7 +3,7 @@ import { store } from '@/store';
 import { ACCESS_TOKEN, CURRENT_USER, IS_SCREENLOCKED } from '@/store/mutation-types';
 import { ResultEnum } from '@/enums/httpEnum';
 
-// import { getUserInfo as getUserInfoApi, login } from '@/api/system/user';
+import { getUserInfo as getUserInfoApi, login } from '@/api/system/user';
 import { storage } from '@/utils/Storage';
 
 export type UserInfoType = {
@@ -78,8 +78,7 @@ export const useUserStore = defineStore({
 
     // 获取用户信息
     async getInfo() {
-      const result = {};
-      // const result = await getUserInfoApi();
+      const result = await getUserInfoApi();
       if (result.permissions && result.permissions.length) {
         const permissionsList = result.permissions;
         this.setPermissions(permissionsList);

@@ -35,10 +35,7 @@ export default defineConfig({
       exposes: {
         './routerIndex': './src/router/index.ts'
       },
-      shared: {
-          vue: {},
-          pinia: {}
-      }
+      // shared: ['vue','pinia']
     }),
     topLevelAwait({
       // The export name of top-level await promise for each chunk module
