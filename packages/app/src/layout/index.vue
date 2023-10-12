@@ -4,7 +4,7 @@
       v-if="
         !isMobile && isMixMenuNoneSub && (navMode === 'vertical' || navMode === 'horizontal-mix')
       "
-      show-trigger="bar"
+      show-trigger="arrow-circle"
       @collapse="collapsed = true"
       :position="fixedMenu"
       @expand="collapsed = false"

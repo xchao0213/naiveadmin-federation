@@ -48,4 +48,17 @@ export default defineConfig({
       promiseImportName: i => `__tla_${i}`
     })
   ],
+  preview: {
+    host: '0.0.0.0',
+    port: 5000,
+    strictPort: true,
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/'),
+      },
+    },
+  },
 })
