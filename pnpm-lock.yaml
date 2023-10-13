@@ -45,6 +45,9 @@ importers:
       axios:
         specifier: ^1.4.0
         version: 1.5.1
+      date-fns:
+        specifier: ^2.30.0
+        version: 2.30.0
       element-resize-detector:
         specifier: ^1.2.4
         version: 1.2.4
@@ -103,9 +106,6 @@ importers:
       '@vueuse/core':
         specifier: ^9.13.0
         version: 9.13.0(vue@3.3.4)
-      date-fns:
-        specifier: ^2.30.0
-        version: 2.30.0
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21

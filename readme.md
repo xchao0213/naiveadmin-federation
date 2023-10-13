@@ -37,7 +37,7 @@ pnpm serve
 - [x] app 加上env，及编译配置
 - [x] app 完成登录并根据权限筛选路由
 - [x] 在list模块中请求接口
-- [ ] app 导出form、table、modal组件，在模块中使用
+- [x] app 导出form、table、modal组件，在模块中使用
 - [ ] app 通过接口数据生成路由
 - [ ] 在list中使用store
 
