@@ -47,6 +47,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         exposes: {
           './routerConstant': './src/router/constant.ts',
           './utilsIndex': './src/utils/index.ts',
+          './utilsAxios': './src/utils/http/axios/index.ts'
         },
         shared: {
           vue: {},

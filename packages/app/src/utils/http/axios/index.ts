@@ -20,7 +20,7 @@ import { useUser } from '@/store/modules/user';
 const globSetting = useGlobSetting();
 const urlPrefix = globSetting.urlPrefix || '';
 
-import router from '@/router';
+// import router from '@/router';
 import { storage } from '@/utils/Storage';
 
 /**
@@ -99,9 +99,11 @@ const transform: AxiosTransform = {
         break;
       // 登录超时
       case ResultEnum.TIMEOUT:
-        const LoginName = PageEnum.BASE_LOGIN_NAME;
+        // const LoginName = PageEnum.BASE_LOGIN_NAME;
         const LoginPath = PageEnum.BASE_LOGIN;
-        if (router.currentRoute.value?.name === LoginName) return;
+        // if (router.currentRoute.value?.name === LoginName) return;
+        // 原来的写法，会导致网页白屏
+        if (window.location.href.indexOf('login') > -1) return;
         // 到登录页
         errorMsg = '登录超时，请重新登录!';
         $dialog.warning({

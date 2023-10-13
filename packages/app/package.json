@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview --port 5000 --strictPort",
-    "preview": "vite preview"
+    "serve": "vite preview"
   },
   "dependencies": {
     "@vicons/antd": "^0.12.0",

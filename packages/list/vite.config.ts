@@ -47,4 +47,10 @@ export default defineConfig({
       promiseImportName: i => `__tla_${i}`
     })
   ],
+  preview: {
+    host: '0.0.0.0',
+    port: 5001,
+    strictPort: true,
+    open: false
+  },
 })
