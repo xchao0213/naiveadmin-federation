@@ -3,23 +3,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { RedirectRoute } from '@/router/base';
 import { PageEnum } from '@/enums/pageEnum';
 import { createRouterGuards } from './guards';
-// import type { IModuleType } from './types';
-// import { Layout } from '@/router/constant';
-// import {__federation_method_setRemote, __federation_method_getRemote, __federation_method_unwrapDefault} from 'virtual:__federation__'
 
-// import { listView } from 'list/listView';
 import routes from 'list/routerIndex';
-// __federation_method_setRemote('list', { url:() => Promise.resolve('http://localhost:5001/assets/remoteEntry.js'), format: 'esm', from: 'vite' });
-// const listRouter = await __federation_method_getRemote('list', `./router`)
-console.log('listRouter', routes);
-
-// const modules = import.meta.glob<IModuleType>('./modules/**/*.ts', { eager: true });
-
-// const routeModuleList: RouteRecordRaw[] = Object.keys(modules).reduce((list, key) => {
-//   const mod = modules[key].default ?? {};
-//   const modList = Array.isArray(mod) ? [...mod] : [mod];
-//   return [...list, ...modList];
-// }, []);
 
 const routeModuleList: RouteRecordRaw[] = [...routes];
 

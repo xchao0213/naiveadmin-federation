@@ -73,6 +73,59 @@ const tableList = (pageSize) => {
   return result;
 };
 
+const menus = [
+  {
+      "path": "/list",
+      "name": "List",
+      "component": "LAYOUT",
+      "redirect": "/list/basic-list",
+      "meta": {
+          "icon": "TableOutlined",
+          "title": "列表页面",
+          "noCache": false,
+          "hidden": false,
+          "query": "",
+          "isFrame": "1",
+          "status": "0",
+          "isRoot": false,
+          "alwaysShow": true
+      },
+      "children": [
+          {
+              "path": "basic-list",
+              "name": "basic-list",
+              "component": "/list/basicList/index",
+              "meta": {
+                  "icon": "",
+                  "title": "基础列表",
+                  "noCache": false,
+                  "hidden": false,
+                  "query": "",
+                  "isFrame": "1",
+                  "status": "0",
+                  "isRoot": false,
+                  "alwaysShow": true
+              }
+          },
+          {
+              "path": "basic-info/:id?",
+              "name": "BasicInfo",
+              "component": "/list/basicList/info",
+              "meta": {
+                  "icon": "",
+                  "title": "基础详情",
+                  "noCache": false,
+                  "hidden": true,
+                  "query": "",
+                  "isFrame": "1",
+                  "status": "0",
+                  "isRoot": false,
+                  "alwaysShow": true
+              }
+          }
+      ]
+  }
+]
 app.post('/login', (req, res) => {
   res.json(resultSuccess({ token }))
 })
@@ -93,6 +146,10 @@ app.get('/table/list', (req, res) => {
     itemCount: count * Number(pageSize),
     list,
   }))
+})
+
+app.get('/menus', (req, res) => {
+  res.json(resultSuccess(menus))
 })
 
 app.listen(port, () => {

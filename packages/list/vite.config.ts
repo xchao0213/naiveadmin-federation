@@ -29,8 +29,8 @@ export default defineConfig({
       name: 'list',
       filename: 'remoteEntry.js',
       remotes: {
-        "app": "https://app.wozaizhao.com/assets/remoteEntry.js",
-        // "app": "http://localhost:5000/assets/remoteEntry.js",
+        // "app": "https://app.wozaizhao.com/assets/remoteEntry.js",
+        "app": "http://localhost:5000/assets/remoteEntry.js",
       },
       exposes: {
         './routerIndex': './src/router/index.ts'

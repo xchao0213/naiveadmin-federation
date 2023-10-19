@@ -6,7 +6,6 @@ import router, { setupRouter } from './router';
 import { setupStore } from '@/store';
 
 async function bootstrap() {
-  console.log('bootstrap')
   const app = createApp(App);
 
   // 挂载状态管理

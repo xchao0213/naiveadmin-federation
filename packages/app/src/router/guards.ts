@@ -12,7 +12,6 @@ const LOGIN_PATH = PageEnum.BASE_LOGIN;
 const whitePathList = [LOGIN_PATH]; // no redirect whitelist
 
 export function createRouterGuards(router: Router) {
-  console.log('createRouterGuards')
   const userStore = useUser();
   const asyncRouteStore = useAsyncRoute();
   router.beforeEach(async (to, from, next) => {
@@ -30,8 +29,6 @@ export function createRouterGuards(router: Router) {
     }
 
     const token = storage.get(ACCESS_TOKEN);
-
-    console.log('token', token);
 
     if (!token) {
       // You can access without permissions. You need to set the routing meta.ignoreAuth to true
@@ -86,7 +83,7 @@ export function createRouterGuards(router: Router) {
   router.afterEach((to, _, failure) => {
     document.title = (to?.meta?.title as string) || document.title;
     if (isNavigationFailure(failure)) {
-      //console.log('failed navigation', failure)
+      console.log('failed navigation', failure)
     }
     const asyncRouteStore = useAsyncRoute();
     // 在这里设置需要缓存的组件名称

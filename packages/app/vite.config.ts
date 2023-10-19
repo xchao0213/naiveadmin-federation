@@ -41,8 +41,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         name: 'app',
         filename: 'remoteEntry.js',
         remotes: {
-          "list": "https://list.wozaizhao.com/assets/remoteEntry.js"
-          // "list": "http://localhost:5001/assets/remoteEntry.js",
+          // "list": "https://list.wozaizhao.com/assets/remoteEntry.js"
+          "list": "http://localhost:5001/assets/remoteEntry.js",
         },
         exposes: {
           './routerConstant': './src/router/constant.ts',

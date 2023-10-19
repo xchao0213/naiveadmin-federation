@@ -2,8 +2,8 @@ import { toRaw, unref } from 'vue';
 import { defineStore } from 'pinia';
 import { RouteRecordRaw } from 'vue-router';
 import { store } from '@/store';
+import { adminMenus } from '@/api/system/menu';
 import { asyncRoutes, constantRouter } from '@/router/index';
-import { generateDynamicRoutes } from '@/router/generator';
 import { useProjectSetting } from '@/hooks/setting/useProjectSetting';
 
 interface TreeHelperConfig {
@@ -28,7 +28,7 @@ export interface IAsyncRouteState {
   isDynamicRouteAdded: boolean;
 }
 
-function filter<T = any>(
+export function filter<T = any>(
   tree: T[],
   func: (n: T) => boolean,
   config: Partial<TreeHelperConfig> = {}
@@ -46,6 +46,28 @@ function filter<T = any>(
   }
 
   return listFilter(tree);
+}
+
+type menu = {
+  path: string;
+  name: string;
+}
+const flattenResult: menu[] = [];
+
+function flattenTree(tree) {
+
+  function traverse(node) {
+    const { path, name, children } = node;
+    flattenResult.push({ path, name });
+
+    if (children && children.length > 0) {
+      children.forEach(child => traverse(child));
+    }
+  }
+
+  tree.forEach(node => traverse(node));
+
+  return flattenResult;
 }
 
 export const useAsyncRouteStore = defineStore({
@@ -97,22 +119,29 @@ export const useAsyncRouteStore = defineStore({
       };
       const { permissionMode } = useProjectSetting();
       if (unref(permissionMode) === 'BACK') {
-        // 动态获取菜单
+        // 动态获取菜单 因为使用了模块化，主模块已经合并了所有模块的路由，这里根据后端的接口来筛选
         try {
-          accessedRouters = await generateDynamicRoutes();
+          const result = await adminMenus();
+          // 树转为数组
+          flattenResult.length = 0;
+          const menus = flattenTree(result);
+          const menusFilter = (route) => {
+            const { name, path } = route;
+            return menus.some((item) => item.name === name && item.path === path);
+          };
+          accessedRouters = filter(asyncRoutes, menusFilter);
         } catch (error) {
           console.log(error);
         }
       } else {
         try {
           //过滤账户是否拥有某一个权限，并将菜单从加载列表移除
-          // accessedRouters = filter(asyncRoutes, routeFilter);
-          accessedRouters = asyncRoutes;
+          accessedRouters = filter(asyncRoutes, routeFilter);
         } catch (error) {
           console.log(error);
         }
       }
-      // accessedRouters = accessedRouters.filter(routeFilter);
+      accessedRouters = accessedRouters.filter(routeFilter);
       this.setRouters(accessedRouters);
       this.setMenus(accessedRouters);
       return toRaw(accessedRouters);
