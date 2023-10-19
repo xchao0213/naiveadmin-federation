@@ -59,17 +59,25 @@
       </template>
     </n-modal>
   </n-card>
+  <n-card class="mt-4" title="演示子模块从主应用store中获取值">
+    <p>{{ username }}</p>
+  </n-card>
 </template>
 
 <script lang="ts" setup>
   import { h, reactive, ref } from 'vue';
   import { BasicTable, TableAction } from 'app/compTable';
   import { BasicForm, FormSchema, useForm } from 'app/compForm';
+  import { useUserStore } from 'app/storeUser';
   import { getTableList } from '@/api/table/list';
   import { columns, ListData } from './columns';
   import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
+
+  const userStore = useUserStore();
+
+  const { username } = userStore?.info || {};
 
   const rules: FormRules = {
     name: {

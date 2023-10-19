@@ -39,7 +39,7 @@ pnpm serve
 - [x] 在list模块中请求接口
 - [x] app 导出form、table、modal组件，在模块中使用
 - [x] app 通过接口数据生成路由
-- [ ] 在list中使用store
+- [x] 在list中使用store
 
 ### FAQ
 

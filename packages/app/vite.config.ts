@@ -46,6 +46,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         },
         exposes: {
           './routerConstant': './src/router/constant.ts',
+          './storeUser': './src/store/modules/user.ts',
           './utilsIndex': './src/utils/index.ts',
           './utilsAxios': './src/utils/http/axios/index.ts',
           './compForm': './src/components/Form/index.ts',
